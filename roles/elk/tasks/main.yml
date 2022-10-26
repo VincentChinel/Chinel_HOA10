@@ -1,0 +1,48 @@
+- name: Installation of ElasticSearch (Ubuntu)
+  apt:
+    name:
+      - elasticsearch
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Installation of Kibana (Ubuntu)
+  apt:
+    name:
+      - kibana
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Installation of Logstash (Ubuntu)
+  apt:
+    name:
+      - logstash
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Installation of ElasticSearch (CentOS)
+  dnf:
+    name:
+      - elasticsearch
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+
+- name: Installation of Kibana (CentOS)
+  dnf:
+    name:
+      - kibana
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+
+- name: Installation of Logstash (CentOS)
+  dnf:
+    name:
+      - logstash
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+

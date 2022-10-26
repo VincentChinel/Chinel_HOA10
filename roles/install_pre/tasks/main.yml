@@ -1,0 +1,25 @@
+- name: ELK Pre-Requisites (Ubuntu)
+  apt:
+    name:
+      - openjdk-11-jdk
+      - wget
+      - apt-transport-https
+      - curl
+      - gnupg2
+      - snapd
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: ELK Pre-Requisites (CentOS)
+  dnf:
+    name:
+      - java-openjdk
+      - snapd
+    state: latest
+    update_cache: yes
+  when: ansible_distribution == "CentOS"
+
+- name: Enable Sockets (CentOS)
+  command: systemctl enable --now snapd.socket
+  when: ansible_distribution == "CentOS"
